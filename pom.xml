@@ -111,13 +111,5 @@
         </repository>
     </distributionManagement>
 
-    <distributionManagement>
-    <snapshotRepository>
-        <id>snapshots</id>
-        <name>a0ib9h5lju2y2-artifactory-primary-0-snapshots</name>
-        <url>https://jfrogcred.jfrog.io/artifactory/thejo-libs-snapshot</url>
-    </snapshotRepository>
-</distributionManagement>
-
 </project>
 
