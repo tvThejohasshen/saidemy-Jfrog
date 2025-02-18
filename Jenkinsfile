@@ -1,5 +1,5 @@
 // Define the URL of the Artifactory registry
-def registry = 'https://trial9gp9fa.jfrog.io'
+def registry = 'https://jfrogcred.jfrog.io/'
 
 pipeline {                                    // 1  // Defines the start of the Jenkins pipeline block
 
@@ -35,12 +35,12 @@ pipeline {                                    // 1  // Defines the start of the 
 
         stage('SonarQube analysis') {         // 8  // Creates a stage named 'SonarQube analysis'
             environment {                     // 9  // Defines environment variables specific to this stage
-                scannerHome = tool 'saidemy-sonar-scanner'  
+                scannerHome = tool 'saidemy sonarqubescanner'  
                                               // Sets the SonarQube scanner tool
             }                                 // 9  // Ends the environment block for this stage
 
             steps {                           // 10  // Defines the steps that will be executed in this stage
-                withSonarQubeEnv('saidemy-sonarqube-server') {  
+                withSonarQubeEnv('saidemy sonarqubeservers') {  
                                               // Executes the SonarQube analysis within the SonarQube environment
                     sh "${scannerHome}/bin/sonar-scanner"  
                                               // Runs the SonarQube scanner tool
@@ -70,7 +70,7 @@ pipeline {                                    // 1  // Defines the start of the 
                 script {                      // 16  // Allows running custom Groovy script inside the pipeline
                     echo '<--------------- Jar Publish Started --------------->'  
                                               // Logs a message indicating the start of JAR publishing
-                    def server = Artifactory.newServer url: registry + "/artifactory", credentialsId: "artifact-cred"  
+                    def server = Artifactory.newServer url: registry + "/artifactory", credentialsId: "jfrogcred"  
                                               // Defines the Artifactory server with the specified URL and credentials
                     def properties = "buildid=${env.BUILD_ID},commitid=${GIT_COMMIT}"  
                                               // Sets properties like build ID and Git commit ID for the build
